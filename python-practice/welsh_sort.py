@@ -42,6 +42,8 @@ def comp(s):
             continue
         list_to_return.append(my_map[s[i]])
         i += 1
+    if i == len(s):
+        return tuple(list_to_return)
     list_to_return.append(my_map[s[len(s)-1]])
     # print (list_to_return)
     return tuple(list_to_return)
