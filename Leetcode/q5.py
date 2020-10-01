@@ -1,22 +1,1 @@
-"""author: Anish Amul Vaidya
-Question 5"""
-
-def calculate():
-    total_grains = 0
-    i = 0
-    belgium_surface = 30528 * 1000 * 1000
-    while i < 64:
-        total_grains = total_grains + 2 ** i
-        i += 1
-    weight = 25 * total_grains // 1000000
-    length = 5 * total_grains // 1000000
-    total_volume = 5 * 5 * 5 * total_grains // 1000000000
-    total_height = total_volume // belgium_surface
-    print (str(total_grains) + "\n")
-    print (str(weight) + " kg\n")
-    print (str(length) + " km\n")
-    print (str(total_height) + " m\n")
-    
-if __name__ == "__main__":
-    calculate()
-    
+class Solution:    def longestPalindrome(self, s: str) -> str:        dp = [[0 for _ in range(len(s))] for _ in range(len(s))]        # print (dp)        ans = ""        max_len = 0        for i in range(len(s)):            dp[i][i] = True            ans = s[i]            max_len = 1        for i in range(len(s)-1):            if s[i] == s[i+1]:                dp[i][i+1] = True                ans = s[i:i+2]                max_len = 2        for j in range(len(s)):            for i in range(0, j-1):                if s[i] == s[j] and dp[i+1][j-1]:                    dp[i][j] = True                    if max_len < j - i + 1:                        dp[i][j] = True                        ans = s[i:j+1]                        max_len = j - i + 1        return ans                #%%s = "babad"s = "aaaaaa"ans = Solution()print (ans.longestPalindrome(s))
